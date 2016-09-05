@@ -1,0 +1,360 @@
+/* ----------------------------------------------------------------------
+ * Universidad Nacional de Costa Rica
+ * Facultad de Ciencias Exactas y Naturales
+ * Escuela de Informática
+ * EIF400 Paradigmas de Programación
+ * Proyecto programado I
+ * Profesor: Dr.Carlos Loría-Sáenz
+ * Estudiantes:
+ *  Carlos Arroyo Villalobos
+ *  Jean Carlo Campos Madrigal
+ *  Andrés Navarro Durán
+ *  Karina Rivera Solano
+ *  Claudio Umaña Arías
+ * Setiembre,2016
+ * ---------------------------------------------------------------------*/
+
+body{
+
+    overflow: hidden;
+}
+
+h1{
+	font-size:26px;
+}
+
+body{
+	background-color: white;
+	--color:black;
+	font-family:  "Homer Simpson", cursive;
+}
+/*   Este div lo contiene todo */
+#divP1{
+	position:absolute;
+	background-color: rgba(255,255,255,1);
+	width:100%;
+	height:100%;
+}
+ 
+/* Este div contiene la parte del laberinto */
+#divP2{
+	position:fixed;
+	background-color: rgba(255,255,255,1);
+	width:100%;
+	height:100%;
+	z-index:10;
+}
+    
+/* Este contiene la parte del popup */
+#divP3{
+    top: -12%;
+    left: -1%;
+	position: relative;
+    width: 104%;
+	height: 105%;
+	background-color: rgba(0,0,0,0.6);
+	z-index:20;
+	--display:none;
+}
+
+#divP4{ /* Este div contiene la parte del login */
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+	color:white;
+	background-color: rgba(0,0,0,0.7);
+    width: 35%;
+	min-width: 230px;
+	height: 30%;
+	min-height:230px;
+	z-index:30;
+	--display:none;
+}
+    
+    
+#tableP1{
+	margin-bottom:5%;
+	width:60%;
+	font-size: 20px;
+    transform: translate(-10%, 10%);
+}
+ 
+#tableP1 input{
+	width:100%;
+	max-width: 270px;
+	min-width: 90px;
+}
+/*Parte del popup del login (botones)*/
+    
+.Loginbutton:hover{
+	background-image: linear-gradient(#333, #222);
+	color: rgb(220,240,220);
+	border: solid black 1px;
+}
+    
+.Loginbutton:active{
+  transform: translateY(4px);
+}
+
+.Loginbutton{
+	color: white;
+	font-size: 100%; 
+	cursor:pointer;
+    border: 1px solid #222;
+    background-color: white;
+    background-image: linear-gradient(#444, #111);
+    border-radius: 6px;
+    box-shadow: 0 1px 1px #777; 
+    
+    
+
+}
+    /*Lista donde están los botones*/
+#popupButton {
+    width: 100%;
+    margin: auto 20%;
+    padding: 0;
+    list-style: none;
+}
+
+#popupButton li {
+    float: left;
+    border-right: 1px solid #222;
+    margin-right: 13% !important;
+    margin-bottom: 10px;
+    position: relative;
+}
+/*-------------------------------------------------------------------------------------------------
+  -------------------------------------------------------------------------------------------------
+  -------------------------------------------------------------------------------------------------*/
+
+canvas {
+  display: inline-block;
+  width: 98%;
+  height: 100%;
+  --margin-top: 10px;
+}
+
+.canvas-container {
+  width: 100%;
+  height: 90%;
+  text-align: center;
+  color:white;
+}
+
+.input-container {
+	position:relative;
+	background-color:black;
+	height:8%;
+	margin-bottom:1%;
+}
+
+.input-container > button{
+	position:relative;
+	display:inline-block;
+	border:black;
+	margin:1px;
+	padding:1px;
+	width: 19%;
+	height:100%;
+	float: left;
+}
+
+@media screen and (min-width: 650px) and (max-height: 1000px) {
+    canvas {
+        width: 75%;
+		height: 90%;
+    }
+}
+.error{
+	border: 2px solid red;
+}
+.tripleRayaMenu {
+    cursor:pointer;
+    font-size: 22px !important;
+}
+
+
+#menu, #menu ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+#menu {
+    cursor:pointer;
+    width: auto;
+    margin: 10px auto;
+    border: 1px solid #222;
+    background-color: black;
+    background-image: linear-gradient(#444, #111);
+    border-radius: 6px;
+    box-shadow: 0 1px 1px #777;
+    
+}
+
+#menu li { /**/
+    float: left;
+    border-right: 1px solid #222;
+    box-shadow: 1px 0 0 #444;
+    position: relative;
+}
+
+#menu a {
+    float: left;
+    padding: 12px 30px;
+    color: #999;
+    text-transform: uppercase;
+    font: bold 12px Arial, Helvetica;
+    text-decoration: none;
+    text-shadow: 0 1px 0 #000;
+}
+
+#menu li:hover > a {
+    color: #fafafa;
+}
+
+#menu ul {
+    margin: 20px 0 0 0;
+    opacity: 0;
+    visibility: hidden;
+    position: absolute;
+    top: 62px; /*Distancia del menu hacía abajo*/
+    left: 0;
+    z-index: 1;    
+    background: #444;   
+    background: linear-gradient(#444, #111);
+    box-shadow: 0 -1px 0 rgba(255,255,255,.3);  
+    border-radius: 3px;
+    transition: all .2s ease-in-out;
+    z-index:2100 ;
+}
+
+#menu li:hover > ul {
+    opacity: 1;
+    visibility: visible;
+    margin: 0;
+}
+
+#menu ul ul {
+    top: 0;
+    left: 103%;
+    margin: 0 0 0 20px;
+    box-shadow: -1px 0 0 rgba(255,255,255,.3);      
+}
+
+#menu li ul li ul li ul  {
+    left: 103%;
+}    
+    
+#menu ul li {
+    float: none;
+    display: block;
+    border: 0;
+    box-shadow: 0 1px 0 #111, 0 2px 0 #666;
+}
+
+#menu ul li:last-child {   
+    box-shadow: none;    
+}
+
+#menu ul a  {    
+    padding: 10px;
+    width: 130px;
+    _height: 10px; /*IE6 only*/
+    display: block;
+    white-space: nowrap;
+    float: none;
+    text-transform: none;
+}
+
+#menu ul a:hover { /* fondo azulado de los menus al estar en hover*/
+    background-color: #0186ba;
+    background-image: linear-gradient(#04acec, #0186ba);
+}
+
+#menu ul li:first-child > a {
+    border-radius: 3px 3px 0 0;
+}
+
+#menu ul li:first-child > a:after {
+    content: '';
+    position: absolute;
+    left: 40px;
+    top: -6px;
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-bottom: 6px solid #444;
+}
+
+#menu ul ul li:first-child a:after {
+    left: -6px;
+    top: 50%;
+    margin-top: -6px;
+    border-left: 0; 
+    border-bottom: 6px solid transparent;
+    border-top: 6px solid transparent;
+    border-right: 6px solid #3b3b3b;
+}
+
+#menu ul li:first-child a:hover:after {
+    border-bottom-color: #04acec; 
+}
+
+#menu ul ul li:first-child a:hover:after {
+    border-right-color: #0299d3; 
+    border-bottom-color: transparent;   
+}
+
+#menu ul li:last-child > a {
+    border-radius: 0 0 3px 3px;
+}
+
+  
+#menu:before, #menu:after {
+		content: "";
+		display: table;
+    clear: both;
+	}
+
+/*////////////////////////Boton generar laberinto////////////////////*/
+    /* Botones del menú */
+    
+#create-button{
+    color: white;
+    background-color: transparent;
+    border:none;
+    font-size: 18px !important;
+    margin: 12px 18px; 
+
+}
+    
+#login-button{
+    color: white;
+    background-color: transparent;
+    border:none;
+    font-size: 18px !important;
+     margin: 12px 18px;
+    text-align: right;
+    float: right;
+}
+    
+#create-button:hover, #login-button{
+     background-color: transparent;
+}
+
+#create-button:active, #login-button{
+  background-color: rgba(50, 50, 50, 0.3);
+  transform: translateY(4px);
+}
+   
+    /* Botones del subMenu*/
+    
+
+
+#load-button:active, #save-button:active, #solve-button:active{
+  background-color: rgba(50, 50, 50, 0.3);
+  transform: translateY(4px);
+}
+  
