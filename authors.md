@@ -1,5 +1,3 @@
-##Authors
-
 ***
 * Carlos Arroyo Villalobos <carlosarrovi96@gmail.com> (https://github.com/kanguarrovi)
 * Jean Carlo Campos Madrigal <jeanca720@gmail.com> (https://github.com/jeancamposm)
